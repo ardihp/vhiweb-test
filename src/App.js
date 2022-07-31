@@ -1,24 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from "react-router-dom";
+import ProtectedRoute from "./helpers/ProtectedRoute";
+import Page404 from "./pages/404";
+import Login from "./pages/Login";
+import User from "./pages/User";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={<Login />} />
+      <Route element={<ProtectedRoute />}>
+        <Route path="/users" element={<User />} />
+      </Route>
+      <Route path="*" element={<Page404 />} />
+    </Routes>
   );
 }
 
