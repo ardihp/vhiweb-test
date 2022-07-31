@@ -19,4 +19,10 @@ const handleLogin = (data, onFinish, onFail) => {
   return response;
 };
 
-export { handleLogin };
+const handleLogout = () => {
+  localStorage.removeItem("refresh_token");
+  localStorage.removeItem("isLogin");
+  window.location.reload();
+};
+
+export { handleLogin, handleLogout };

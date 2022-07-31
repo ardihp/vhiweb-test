@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
-import Layout from "../components/Layout";
-import { handleLogin } from "../hooks/Login";
-import History from "../helpers/History";
+import Layout from "components/Layout";
+import { handleLogin } from "hooks/Auth";
+import History from "helpers/History";
 
 const Login = () => {
   const [inputLogin, setInputLogin] = useState({
