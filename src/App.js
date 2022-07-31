@@ -8,8 +8,8 @@ import Detail from "./pages/User/Detail";
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Login />} />
       <Route element={<ProtectedRoute />}>
+        <Route path="/" element={<Login />} />
         <Route path="/users" element={<User />} />
         <Route path="/users/:id" element={<Detail />} />
       </Route>
