@@ -8,4 +8,12 @@ const getUsers = (page) => {
   return response;
 };
 
-export { getUsers };
+const getDetailUser = (id) => {
+  const response = axios
+    .get(`https://reqres.in/api/users/${id}`)
+    .catch((err) => console.log(err));
+
+  return response;
+};
+
+export { getUsers, getDetailUser };
