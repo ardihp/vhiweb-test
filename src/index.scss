@@ -137,11 +137,13 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
+  text-decoration: none;
+  color: #191720;
   cursor: pointer;
 }
 
 .btn-white {
-  @include button("white");
+  @include button(white);
 }
 
 .btn-back {
@@ -274,5 +276,34 @@ p {
       font-weight: 500;
       color: #9495a2;
     }
+  }
+}
+
+.container-404 {
+  max-width: 500px;
+  padding: 0 20px;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .title {
+    font-size: 140px;
+    line-height: 1em;
+    font-weight: 700;
+    color: #3c3b44;
+  }
+
+  .desc {
+    font-size: 20px;
+    font-weight: 500;
+    color: #90929e;
+    margin-bottom: 35px;
+  }
+
+  .btn-white {
+    width: 70%;
   }
 }
