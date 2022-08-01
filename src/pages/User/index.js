@@ -7,16 +7,21 @@ import { isEmpty } from "lodash";
 
 const User = () => {
   const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState();
 
   useEffect(() => {
+    setLoading(true);
     getUsers().then((response) => {
       setUsers(response.data);
+      setLoading(false);
     });
   }, []);
 
   const handlePageChange = (value) => {
+    setLoading(true);
     getUsers(value.selected > 0 && users?.page + 1).then((response) => {
       setUsers(response.data);
+      setLoading(false);
     });
     window.scroll(0, 0);
   };
@@ -25,7 +30,9 @@ const User = () => {
     <Layout>
       <div className="container-user">
         <div className="list-user">
-          {!isEmpty(users?.data) ? (
+          {loading ? (
+            <p>loading...</p>
+          ) : !isEmpty(users?.data) ? (
             users?.data?.map((item, index) => (
               <UserCard key={index} data={item} />
             ))
