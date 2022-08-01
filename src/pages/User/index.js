@@ -3,6 +3,7 @@ import Layout from "components/Layout";
 import { getUsers } from "hooks/ListUser";
 import ReactPaginate from "react-paginate";
 import UserCard from "components/UserCard";
+import { isEmpty } from "lodash";
 
 const User = () => {
   const [users, setUsers] = useState([]);
@@ -24,9 +25,13 @@ const User = () => {
     <Layout>
       <div className="container-user">
         <div className="list-user">
-          {users?.data?.map((item, index) => (
-            <UserCard key={index} data={item} />
-          )) || <p>Tidak ada data.</p>}
+          {!isEmpty(users?.data) ? (
+            users?.data?.map((item, index) => (
+              <UserCard key={index} data={item} />
+            ))
+          ) : (
+            <p>Tidak ada data.</p>
+          )}
         </div>
         <ReactPaginate
           pageCount={users?.total_pages || 0}
